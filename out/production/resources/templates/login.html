@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <head th:replace="reusable/layout :: head('Log in')"></head>
+</head>
+<body>
+
+    <div class="container mt-5 d-flex justify-content-center">
+        <form class="w-50">
+            <h3>Log in</h3>
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <label for="validationCustom01">Email</label>
+                    <input type="text" class="form-control" id="validationCustom01" placeholder="Email"  th:required="true"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <label for="validationCustom02">Password</label>
+                    <input type="text" class="form-control" id="validationCustom02" placeholder="Password"  th:required="true"/>
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Submit form</button>
+        </form>
+    </div>
+
+    <div th:replace="reusable/layout :: scripts"></div>
+</body>
+</html>
