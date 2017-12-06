@@ -13,4 +13,39 @@ public class Todo {
 
     @ManyToOne
     private User user;
+
+    public Todo() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isCompleated() {
+        return compleated;
+    }
+
+    public void setCompleated(boolean compleated) {
+        this.compleated = compleated;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
