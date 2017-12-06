@@ -3,6 +3,7 @@ package com.example.practice101.model;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class User {
     @NotNull
     private String email;
     @NotNull
-    @Min(value = 3, message = "At least 3 characters required")
+    @Size(min = 3, max = 15, message = "The category name must be {min} to {max} characters in length.")
     private String password;
 
     @OneToMany(mappedBy = "user")
