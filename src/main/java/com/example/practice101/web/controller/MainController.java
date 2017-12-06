@@ -11,7 +11,7 @@ public class MainController {
         return "index";
     }
 
-    @RequestMapping("/registration")
+    @RequestMapping("/register")
     public String getRegistrationPage() {
         return "registration";
     }
