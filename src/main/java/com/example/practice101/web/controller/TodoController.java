@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -31,6 +32,14 @@ public class TodoController {
 
     @RequestMapping(value="/todo", method = RequestMethod.POST)
     public String addTodo(@ModelAttribute Todo todo) {
+        todoDao.save(todo);
+        return "redirect:/";
+    }
+
+    @RequestMapping(value="/complete", method = RequestMethod.POST)
+    public String completeTodo(@RequestParam Long id) {
+        Todo todo = todoDao.findOne(id);
+        todo.setComplete(!todo.isComplete());
         todoDao.save(todo);
         return "redirect:/";
     }

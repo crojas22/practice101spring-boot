@@ -5,3 +5,8 @@
 .list-item {
     list-style: none;
 }
+
+:checked + label {
+    color: red !important;
+    text-decoration-line: line-through !important;
+}

@@ -12,16 +12,19 @@
                 <div class="row">
                     <label for="addTodo">Add Todo</label>
                     <input type="text" class="form-control" th:field="*{description}" placeholder="New task" id="addTodo" autocomplete="off"/>
-                    <button class="btn btn-primary mt-3" type="submit">Register</button>
+                    <button class="btn btn-primary my-3" type="submit">Register</button>
                 </div>
             </form>
         </div>
         <ul class="list-group">
-            <li th:each="todo : ${todos}" class="list-item">
-                <form method="post" th:action="@{/todo}" class="inline todo-item">
+            <li th:each="todo : ${todos}" class="list-item my-2">
+                <form method="post" th:action="@{/complete}">
                     <input type="hidden" name="id" th:value="${todo.id}"/>
                     <input type="checkbox" th:id="|checked_${todo.id}|" th:checked="${todo.complete}"/>
                     <label th:for="|checked_${todo.id}|" th:text="${todo.description}"></label>
+                </form>
+                <form th:method="post" th:action="@{|/todo/${todo.id}/delete|}">
+                    <button class="btn btn-danger btn-sm my-3" type="submit">Delete</button>
                 </form>
             </li>
         </ul>

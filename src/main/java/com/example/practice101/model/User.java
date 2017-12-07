@@ -1,7 +1,6 @@
 package com.example.practice101.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
@@ -17,8 +16,11 @@ public class User {
     private String firstName;
     @NotNull
     private String lastName;
+
     @NotNull
+    @Column(unique = true)
     private String email;
+
     @NotNull
     @Size(min = 3, max = 15, message = "The category name must be {min} to {max} characters in length.")
     private String password;
@@ -26,7 +28,19 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Todo> todos = new ArrayList<>();
 
+    @OneToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
+
     public User() {
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public Long getId() {
