@@ -5,7 +5,27 @@
 </head>
 <body>
     <div th:replace="reusable/layout :: nav"></div>
-    <h1>Hello</h1>
+
+    <div class="container">
+        <div>
+            <form method="post" th:object="${todo}" th:action="@{/todo}" class="inline new-item">
+                <div class="row">
+                    <label for="addTodo">Add Todo</label>
+                    <input type="text" class="form-control" th:field="*{description}" placeholder="New task" id="addTodo" autocomplete="off"/>
+                    <button class="btn btn-primary mt-3" type="submit">Register</button>
+                </div>
+            </form>
+        </div>
+        <ul class="list-group">
+            <li th:each="todo : ${todos}" class="list-item">
+                <form method="post" th:action="@{/todo}" class="inline todo-item">
+                    <input type="hidden" name="id" th:value="${todo.id}"/>
+                    <input type="checkbox" th:id="|checked_${todo.id}|" th:checked="${todo.complete}"/>
+                    <label th:for="|checked_${todo.id}|" th:text="${todo.description}"></label>
+                </form>
+            </li>
+        </ul>
+    </div>
     <div th:replace="reusable/layout :: scripts"></div>
 </body>
 </html>

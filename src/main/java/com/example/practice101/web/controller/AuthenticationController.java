@@ -19,11 +19,6 @@ public class AuthenticationController {
     @Autowired
     UserDao users;
 
-    @RequestMapping("/")
-    public String getMainPage() {
-        return "index";
-    }
-
     @RequestMapping("/register")
     public String getRegistrationPage(Model model) {
         if (!model.containsAttribute("user")) {

@@ -9,7 +9,7 @@ public class Todo {
     private Long id;
 
     private String description;
-    private boolean compleated;
+    private boolean complete;
 
     @ManyToOne
     private User user;
@@ -33,12 +33,12 @@ public class Todo {
         this.description = description;
     }
 
-    public boolean isCompleated() {
-        return compleated;
+    public boolean isComplete() {
+        return complete;
     }
 
-    public void setCompleated(boolean compleated) {
-        this.compleated = compleated;
+    public void setComplete(boolean complete) {
+        this.complete = complete;
     }
 
     public User getUser() {
