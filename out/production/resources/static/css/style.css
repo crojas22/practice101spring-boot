@@ -7,6 +7,6 @@
 }
 
 :checked + label {
-    color: red !important;
-    text-decoration-line: line-through !important;
+    color: red;
+    text-decoration-line: line-through;
 }
