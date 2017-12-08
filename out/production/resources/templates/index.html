@@ -9,10 +9,11 @@
     <div class="container">
         <div>
             <form method="post" th:object="${todo}" th:action="@{/todo}" class="inline new-item">
-                <div class="row">
+                <div>
+                    <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
                     <label for="addTodo">Add Todo</label>
                     <input type="text" class="form-control" th:field="*{description}" placeholder="New task" id="addTodo" autocomplete="off"/>
-                    <button class="btn btn-primary my-3" type="submit">Register</button>
+                    <button class="btn btn-primary my-3" type="submit">Add</button>
                 </div>
             </form>
         </div>
@@ -28,6 +29,9 @@
                 </form>
             </li>
         </ul>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out" class="btn btn-primary my-3"/>
+        </form>
     </div>
     <div th:replace="reusable/layout :: scripts"></div>
 </body>

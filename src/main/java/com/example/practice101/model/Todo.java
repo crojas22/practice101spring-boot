@@ -12,10 +12,13 @@ public class Todo {
     private boolean complete;
 
     @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
     public Todo() {
     }
+
+
 
     public Long getId() {
         return id;

@@ -36,8 +36,8 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private boolean enabled;
 
-    @OneToMany(mappedBy = "user")
-    private List<Todo> todos = new ArrayList<>();
+//    @OneToMany(mappedBy = "user")
+//    private List<Todo> todos = new ArrayList<>();
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "role_id")
@@ -75,13 +75,13 @@ public class User implements UserDetails {
         this.email = email;
     }
 
-    public List<Todo> getTodos() {
-        return todos;
-    }
-
-    public void setTodos(List<Todo> todos) {
-        this.todos = todos;
-    }
+//    public List<Todo> getTodos() {
+//        return todos;
+//    }
+//
+//    public void setTodos(List<Todo> todos) {
+//        this.todos = todos;
+//    }
 
     public Role getRole() {
         return role;

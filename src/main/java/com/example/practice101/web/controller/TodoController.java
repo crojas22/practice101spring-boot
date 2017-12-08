@@ -1,13 +1,17 @@
 package com.example.practice101.web.controller;
 
 import com.example.practice101.model.Todo;
-import com.example.practice101.repository.TodoDao;
-import com.example.practice101.repository.UserDao;
+import com.example.practice101.model.User;
 import com.example.practice101.service.TodoService;
+import com.example.practice101.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
+
 @Controller
 public class TodoController {
 
@@ -15,7 +19,7 @@ public class TodoController {
     private TodoService todoService;
 
     @Autowired
-    UserDao users;
+    UserService users;
 
     @RequestMapping("/")
     public String getMainPage(Model model) {
@@ -25,7 +29,12 @@ public class TodoController {
     }
 
     @RequestMapping(value="/todo", method = RequestMethod.POST)
-    public String addTodo(@ModelAttribute Todo todo) {
+    public String addTodo(@ModelAttribute Todo todo, Principal principal) {
+        // hitting server to check info
+//        User user = users.findByUsername(principal.getName());
+        // without using server
+        User user = (User) ((UsernamePasswordAuthenticationToken)principal).getPrincipal();
+        todo.setUser(user);
         todoService.save(todo);
         return "redirect:/";
     }
