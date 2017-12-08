@@ -2,11 +2,12 @@ package com.example.practice101.service;
 
 import com.example.practice101.model.Todo;
 import com.example.practice101.repository.TodoDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class TodoServiceImpl implements TodoService {
-
+    @Autowired
     TodoDao todoDao;
 
     @Override

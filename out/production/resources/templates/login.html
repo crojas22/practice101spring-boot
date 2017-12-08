@@ -8,19 +8,19 @@
     <div th:replace="reusable/layout :: nav"></div>
 
     <div class="container mt-5 d-flex justify-content-center">
-        <form class="w-50">
+        <form class="w-50" th:action="@{/login}"  method="post">
             <div th:replace="reusable/layout :: flash"></div>
             <h3>Log in</h3>
             <div class="row">
                 <div class="col-md-12 mb-3">
-                    <label for="validationCustom01">Email</label>
-                    <input type="text" class="form-control" id="validationCustom01" placeholder="Email"  th:required="true"/>
+                    <label for="validationCustom01">Username</label>
+                    <input type="text" name="username"  class="form-control" id="validationCustom01" placeholder="Username"  th:required="true"/>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12 mb-3">
                     <label for="validationCustom02">Password</label>
-                    <input type="text" class="form-control" id="validationCustom02" placeholder="Password"  th:required="true"/>
+                    <input type="password" name="password" class="form-control" id="validationCustom02" placeholder="Password"  th:required="true"/>
                 </div>
             </div>
             <button class="btn btn-primary" type="submit">Log in</button>

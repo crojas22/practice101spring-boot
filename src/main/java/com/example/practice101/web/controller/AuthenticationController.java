@@ -48,6 +48,7 @@ public class AuthenticationController {
 
     @RequestMapping("/login")
     public String getLoginPage(Model model, HttpServletRequest request) {
+//        model.addAttribute("user", new User());
         try {
             Object flash = request.getSession().getAttribute("flash");
             model.addAttribute("flash", flash);

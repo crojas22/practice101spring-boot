@@ -17,12 +17,10 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
     private String firstName;
-    @NotNull
+
     private String lastName;
 
-    @NotNull
     @Column(unique = true)
     private String email;
 
@@ -44,13 +42,6 @@ public class User implements UserDetails {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "role_id")
     private Role role;
-
-
-
-    public User() {
-    }
-
-
 
     public Long getId() {
         return id;
