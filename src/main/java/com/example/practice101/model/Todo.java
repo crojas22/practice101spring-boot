@@ -3,10 +3,7 @@ package com.example.practice101.model;
 import javax.persistence.*;
 
 @Entity
-public class Todo {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Todo extends BaseEntity {
 
     private String description;
     private boolean complete;
@@ -16,17 +13,11 @@ public class Todo {
     private User user;
 
     public Todo() {
+        super();
     }
 
 
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getDescription() {
         return description;

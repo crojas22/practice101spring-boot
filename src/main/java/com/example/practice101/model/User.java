@@ -12,10 +12,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-public class User implements UserDetails {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class User extends BaseEntity implements UserDetails {
 
     private String firstName;
 
@@ -36,19 +33,13 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private boolean enabled;
 
-//    @OneToMany(mappedBy = "user")
-//    private List<Todo> todos = new ArrayList<>();
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "role_id")
     private Role role;
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
+    public User() {
+        super();
     }
 
     public String getFirstName() {
@@ -74,14 +65,6 @@ public class User implements UserDetails {
     public void setEmail(String email) {
         this.email = email;
     }
-
-//    public List<Todo> getTodos() {
-//        return todos;
-//    }
-//
-//    public void setTodos(List<Todo> todos) {
-//        this.todos = todos;
-//    }
 
     public Role getRole() {
         return role;

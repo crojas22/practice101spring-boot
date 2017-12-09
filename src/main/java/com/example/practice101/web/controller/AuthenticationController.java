@@ -3,6 +3,7 @@ package com.example.practice101.web.controller;
 import com.example.practice101.model.Role;
 import com.example.practice101.model.User;
 import com.example.practice101.repository.UserDao;
+import com.example.practice101.service.UserService;
 import com.example.practice101.web.FlashMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -20,7 +21,7 @@ import javax.validation.Valid;
 public class AuthenticationController {
 
     @Autowired
-    UserDao users;
+    UserService users;
 
     @RequestMapping("/register")
     public String getRegistrationPage(Model model) {
